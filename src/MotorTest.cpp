@@ -90,6 +90,6 @@ void loop()
 
     delay(50);
   }
-  motor1.MoveFor(360, 120); 
-  motor2.MoveFor(-360, 120); 
+  motor1.MoveFor(360, 180); 
+  motor2.MoveFor(-360, 180); 
 }
