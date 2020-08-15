@@ -23,6 +23,8 @@ const int buttonPin = BOOT_FLAG_PIN ;
  */
 void setup() 
 {
+  //delay(2000);
+
   // This will initialize the Serial as 115200 for prints
   Serial.begin(115200);
   Motor::allocateTimer(0);
@@ -43,10 +45,13 @@ void loop()
   //The following line will cause the program to wait indefinitely until the button is pressed
   while(digitalRead(buttonPin)) {} 
 
+  Serial.println("Setting speeds");
+
   motor1.SetSpeed(180); 
   motor2.SetSpeed(-180); 
 
   uint32_t startTime = millis(); //note when the motor started
+
 
   while(millis() - startTime < 3000) //run for 3 seconds
   {
@@ -64,7 +69,7 @@ void loop()
   while(digitalRead(buttonPin)) {} 
 
   //motor1.SetEffort(-0.1); 
-  motor2.SetEffort(0.1); 
+  motor2.SetEffort(0.3); 
 
   startTime = millis(); //note when the motor started
 
@@ -90,6 +95,6 @@ void loop()
 
     delay(50);
   }
-  motor1.MoveFor(360, 180); 
-  motor2.MoveFor(-360, 180); 
+  motor1.StartMoveFor(720, -540); 
+  motor2.MoveFor(-720, 540); 
 }
