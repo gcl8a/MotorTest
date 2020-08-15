@@ -86,15 +86,21 @@ void loop()
 	motor2.SetEffort(0);
 
   //The following line will cause the program to wait indefinitely until the button is pressed
-  while(digitalRead(buttonPin)) {
+  while(digitalRead(buttonPin)) {}
+  motor1.StartMoveFor(720, -540); 
+  motor2.MoveFor(-720, 540); 
 
+  //The following line will cause the program to wait indefinitely until the button is pressed
+  while(digitalRead(buttonPin)) {}
+
+  motor1.StartMoveTo(0, -180); 
+  motor2.MoveTo(0, 180); 
+
+  while(digitalRead(buttonPin)) //run for 3 seconds
+  {
     Serial.print(motor1.getCurrentDegrees()); //motor1 position
     Serial.print('\t'); //TAB character
     Serial.print(motor2.getCurrentDegrees()); //motor2 position
     Serial.print('\n'); //newline character
-
-    delay(50);
   }
-  motor1.StartMoveFor(720, -540); 
-  motor2.MoveFor(-720, 540); 
 }
