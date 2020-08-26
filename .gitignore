@@ -1,2 +1,4 @@
 .pio
 .vscode
+motor_test.code-workspace
+*.code-workspace
